@@ -6,18 +6,27 @@ public class EnemyScr : MonoBehaviour
 {
     List<GameObject> wayPionts = new List<GameObject>();
     int wayIndex = 0;
-    int speed = 10;
+    public int speed = 1;
+    public GameObject wayPointsParent;
 
     // Start is called before the first frame update
     void Start()
     {
-        wayPionts = GameObject.Find("Main Camera").GetComponent<GameCtrlScr>().wayPionts;
+        GetWaypoints();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    void GetWaypoints()
+    {
+        for (int i = 0; i < wayPointsParent.transform.childCount; i++)
+        {
+            wayPionts.Add(wayPointsParent.transform.GetChild(i).gameObject);
+        }
     }
 
     void Move()

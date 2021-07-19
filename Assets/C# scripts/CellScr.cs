@@ -6,4 +6,15 @@ using UnityEngine.UI;
 public class CellScr : MonoBehaviour
 {
     public bool isGround;
+
+
+    public void Start()
+    {
+                
+    }
+
+    private void Update()
+    {
+         
+    }
 }

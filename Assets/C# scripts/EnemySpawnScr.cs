@@ -5,23 +5,10 @@ using UnityEngine.UI;
 
 public class EnemySpawnScr : MonoBehaviour
 {
+    public LvlManagerScr LMS;
     public float timeToSpawn = 4;
     int spawnCount = 0;
-    public GameObject enemyPref, wayPointParent; 
-
-    IEnumerator SpawnEnemy(int enemyCount)
-    {
-        spawnCount++;
-
-        for (int i = 0; i < enemyCount; i++)
-        {
-            GameObject tmpEnemy = Instantiate(enemyPref);
-            tmpEnemy.transform.SetParent(gameObject.transform, false);
-            tmpEnemy.GetComponent<EnemyScr>().wayPointsParent = wayPointParent;
-
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
+    public GameObject enemyPref;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +20,33 @@ public class EnemySpawnScr : MonoBehaviour
         }
 
         timeToSpawn -= Time.deltaTime;
+    }
 
-        GameObject.Find("SpawnTimeText").GetComponent<Text>().text = Mathf.Round(timeToSpawn).ToString();
+    IEnumerator SpawnEnemy(int enemyCount)
+    {
+        spawnCount++;
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            GameObject tmpEnemy = Instantiate(enemyPref);
+            tmpEnemy.transform.SetParent(gameObject.transform, false);
+            if(LMS == null)
+            {
+
+            }
+            else 
+            {
+
+            }
+            Transform startCellPos = LMS.wayPoints[0].transform;
+            
+            Vector3 startPos = new Vector3(startCellPos.position.x - startCellPos.GetComponent<SpriteRenderer>().bounds.size.x,
+                                           startCellPos.position.y - startCellPos.GetComponent<SpriteRenderer>().bounds.size.y / 2,
+                                           -1);
+
+            tmpEnemy.transform.position = startPos;
+
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

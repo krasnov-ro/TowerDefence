@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyScr : MonoBehaviour
 {
-    List<GameObject> wayPionts = new List<GameObject>();
+    List<GameObject> wayPoints = new List<GameObject>();
     int wayIndex = 0;
     public int speed = 1;
-    public GameObject wayPointsParent;
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +22,21 @@ public class EnemyScr : MonoBehaviour
 
     void GetWaypoints()
     {
-        for (int i = 0; i < wayPointsParent.transform.childCount; i++)
-        {
-            wayPionts.Add(wayPointsParent.transform.GetChild(i).gameObject);
-        }
+        wayPoints = GameObject.Find("LvlGroup").GetComponent<LvlManagerScr>().wayPoints;
     }
-
     void Move()
     {
-        Vector3 dir = wayPionts[wayIndex].transform.position - transform.position;
+        Transform currentWayPoint = wayPoints[wayIndex].transform;
+        Vector3 currentWayPos = new Vector3(currentWayPoint.position.x + currentWayPoint.GetComponent<SpriteRenderer>().bounds.size.x / 2,
+                                             currentWayPoint.position.y - currentWayPoint.GetComponent<SpriteRenderer>().bounds.size.y / 2,
+                                             -1);
+
+        Vector3 dir = currentWayPos - transform.position;
         transform.Translate(dir.normalized * Time.deltaTime * speed);
 
-        if(Vector3.Distance(transform.position, wayPionts[wayIndex].transform.position) <0.3f)
+        if(Vector3.Distance(transform.position, currentWayPos) <0.3f)
         {
-            if (wayIndex < wayPionts.Count - 1)
+            if (wayIndex < wayPoints.Count - 1)
             {
                 wayIndex++;
             }

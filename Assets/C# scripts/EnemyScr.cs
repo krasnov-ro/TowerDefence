@@ -7,6 +7,7 @@ public class EnemyScr : MonoBehaviour
     List<GameObject> wayPoints = new List<GameObject>();
     int wayIndex = 0;
     public int speed = 1;
+    int health = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,15 @@ public class EnemyScr : MonoBehaviour
             }
             else
                 Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health = health - damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

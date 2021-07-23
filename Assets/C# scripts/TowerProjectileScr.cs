@@ -6,6 +6,7 @@ public class TowerProjectileScr : MonoBehaviour
 {
     Transform target;
     public int speed = 7;
+    int damage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,10 @@ public class TowerProjectileScr : MonoBehaviour
         if (target != null)
         {
             if (Vector2.Distance(transform.position, target.position) < 0.1f)
+            {
+                target.GetComponent<EnemyScr>().TakeDamage(damage);
                 Destroy(gameObject);
-
+            }
             else
             {
                 Vector2 dir = target.position - transform.position;

@@ -53,7 +53,7 @@ public class TowerScr : MonoBehaviour
         CurrCooldown = Cooldown;
         
         GameObject proj = Instantiate(TowerProjectilePref);
-        proj.transform.position = transform.position;
+        proj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         proj.GetComponent<TowerProjectileScr>().SetTarget(enemy);
     }
 }

@@ -10,15 +10,17 @@ public class LvlManagerScr : MonoBehaviour
     public Transform cellParent;
     public Sprite[] tileSpr = new Sprite[2];
     public List<GameObject> wayPoints = new List<GameObject>();
-    GameObject[,] allCells = new GameObject[10, 17];
+    GameObject[,] allCells = new GameObject[10, 15];
     int currWayX, currWayY;
     GameObject firstCell;
+    GameObject firstNoGroundCell;
 
     // Start is called before the first frame update
     void Start() 
     {
         CreateLvl();
         LoadWaypoints();
+
     }
         
     void CreateLvl()
@@ -47,10 +49,15 @@ public class LvlManagerScr : MonoBehaviour
         float sprSizeY = tmpCell.GetComponent<SpriteRenderer>().bounds.size.y;
 
         tmpCell.transform.position = new Vector3(wV.x + (sprSizeX * x), wV.y + (sprSizeY * -y));
+        if(firstNoGroundCell == null && !isGround)
+        {
+            firstNoGroundCell = tmpCell;
+        }
+
         if(isGround)
         {
             tmpCell.GetComponent<CellScr>().isGround = true;
-            if(firstCell == null && tmpCell.transform.position.x < -11)
+            if(firstCell == null && tmpCell.transform.position.x == firstNoGroundCell.transform.position.x)
             {
                 firstCell = tmpCell;
                 currWayX = x;
@@ -71,6 +78,7 @@ public class LvlManagerScr : MonoBehaviour
     void LoadWaypoints()
     {
         GameObject currWayGo;
+
         wayPoints.Add(firstCell);
 
         while(true)

@@ -20,6 +20,17 @@ public class Tower
         this.Price = Price;
         Spr = Resources.Load<Sprite>(sprPath);
     }
+
+    public Tower(Tower other)
+    {
+        type = other.type;
+        Name = other.Name;
+        Text = other.Text;
+        range = other.range;
+        Cooldown = other.Cooldown;
+        Price = other.Price;
+        Spr = other.Spr;
+    }
 }
 
 public class TowerProjectile

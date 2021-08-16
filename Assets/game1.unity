@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LMS: {fileID: 1428241238}
-  timeToSpawn: 4
+  timeToSpawn: 7
   enemyPref: {fileID: 6865490078154196101, guid: d28a88c22bf4b9d47ab9229519e5dd88, type: 3}
 --- !u!1 &1095430971
 GameObject:

@@ -37,12 +37,14 @@ public class CellScr : MonoBehaviour
 
     public void BuildTower(Tower tower)
     {
+        tower.CurrCooldown = .3f;
         GameObject tmpTower = Instantiate(TowerPref);
         tmpTower.transform.SetParent(transform, false);
         Vector2 towerPos = new Vector2(transform.position.x + tmpTower.GetComponent<SpriteRenderer>().bounds.size.x / 2,
                                        transform.position.y - tmpTower.GetComponent<SpriteRenderer>().bounds.size.y / 2);
         tmpTower.transform.position = transform.position;
         tmpTower.GetComponent<TowerScr>().selfType = (TowerType)tower.type;
+       
         hasTower = true;
         FindObjectOfType<ShopScr>().CloseShop();
     }

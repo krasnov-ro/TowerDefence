@@ -54,7 +54,7 @@ public class EnemyScr : MonoBehaviour
         if(enemySelf.Health <= 0)
         {
             Destroy(gameObject);
-            MoneyManagerScr.Instance.GameMoney += 20;
+            MoneyManagerScr.Instance.GameMoney += 15;
         }
     }
 

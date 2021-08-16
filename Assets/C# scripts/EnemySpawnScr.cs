@@ -46,7 +46,7 @@ public class EnemySpawnScr : MonoBehaviour
 
             tmpEnemy.transform.position = startPos;
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

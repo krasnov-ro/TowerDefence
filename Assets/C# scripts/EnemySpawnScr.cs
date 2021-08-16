@@ -9,6 +9,12 @@ public class EnemySpawnScr : MonoBehaviour
     public float timeToSpawn = 4;
     int spawnCount = 0;
     public GameObject enemyPref;
+    GameCtrlScr gcs;
+
+    private void Start()
+    {
+        gcs = FindObjectOfType<GameCtrlScr>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,14 +36,8 @@ public class EnemySpawnScr : MonoBehaviour
         {
             GameObject tmpEnemy = Instantiate(enemyPref);
             tmpEnemy.transform.SetParent(gameObject.transform, false);
-            if(LMS == null)
-            {
 
-            }
-            else 
-            {
-
-            }
+            tmpEnemy.GetComponent<EnemyScr>().enemySelf = new Enemy(gcs.AllEnemies[Random.Range(0, gcs.AllEnemies.Count)]);
             Transform startCellPos = LMS.wayPoints[0].transform;
             
             Vector3 startPos = new Vector3(startCellPos.position.x - startCellPos.GetComponent<SpriteRenderer>().bounds.size.x,

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2178100799268868357}
   - component: {fileID: 1385394108833630406}
   - component: {fileID: 1362923978205558876}
+  - component: {fileID: -6963240977169282720}
   m_Layer: 0
   m_Name: cellPref
   m_TagString: Untagged
@@ -96,3 +97,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGround: 0
+  hasTower: 0
+  BaseColor: {r: 1, g: 1, b: 1, a: 1}
+  CurrColor: {r: 0.36320752, g: 0.6618664, b: 1, a: 0.53333336}
+  ShopPref: {fileID: 5053339250530931252, guid: faa7471b93f21aa428ddd56db0144def, type: 3}
+  TowerPref: {fileID: 3917346513567788552, guid: 4121c21a7eeb2a4418b085b1e5eca63e, type: 3}
+--- !u!61 &-6963240977169282720
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361388870976024723}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6666667, y: -0.675}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 1.3333334, y: 1.35}
+    newSize: {x: 4, y: 4.05}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3333334, y: 1.35}
+  m_EdgeRadius: 0

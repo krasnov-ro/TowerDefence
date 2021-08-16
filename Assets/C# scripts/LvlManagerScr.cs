@@ -14,6 +14,7 @@ public class LvlManagerScr : MonoBehaviour
     int currWayX, currWayY;
     GameObject firstCell;
     GameObject firstNoGroundCell;
+    public GameObject towerPref;
 
     // Start is called before the first frame update
     void Start() 

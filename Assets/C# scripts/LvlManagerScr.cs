@@ -10,7 +10,8 @@ public class LvlManagerScr : MonoBehaviour
     public Transform cellParent;
     public Sprite[] tileSpr = new Sprite[2];
     public List<GameObject> wayPoints = new List<GameObject>();
-    GameObject[,] allCells = new GameObject[10, 15];
+    GameObject[,] allCells = new GameObject[10, 19];
+    //List<List<GameObject>> allCells = new List<List<GameObject>>();
     int currWayX, currWayY;
     GameObject firstCell;
     GameObject firstNoGroundCell;
@@ -21,7 +22,6 @@ public class LvlManagerScr : MonoBehaviour
     {
         CreateLvl();
         LoadWaypoints();
-
     }
         
     void CreateLvl()
@@ -73,7 +73,9 @@ public class LvlManagerScr : MonoBehaviour
     {
         TextAsset tmpTxt = Resources.Load<TextAsset>($"Lvl{i}Ground");
         string tmpSpr = tmpTxt.text.Replace(Environment.NewLine, string.Empty);
-        return tmpSpr.Split('!');
+        string[] returnSpr = tmpSpr.Split('!');
+
+        return returnSpr;
     }
 
     void LoadWaypoints()

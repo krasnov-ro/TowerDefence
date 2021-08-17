@@ -26,7 +26,7 @@ public class CellScr : MonoBehaviour
     {
         if (!isGround && FindObjectsOfType<ShopScr>().Length == 0)
         {
-            if(!hasTower)
+            if (!hasTower)
             {
                 GameObject shopObj = Instantiate(ShopPref);
                 shopObj.transform.SetParent(GameObject.Find("Canvas").transform, false);

@@ -8,12 +8,13 @@ public class TowerScr : MonoBehaviour
     Tower selfTower;
     public TowerType selfType;
     GameCtrlScr gcs;
+    int test = 1;
 
     private void Start()
     {
         gcs = FindObjectOfType<GameCtrlScr>();
 
-        selfTower = gcs.AllTowers[(int)selfType];
+        selfTower = new Tower(gcs.AllTowers[(int)selfType]);
         GetComponent<SpriteRenderer>().sprite = selfTower.Spr;
 
         InvokeRepeating("SearchTarget", 0, .1f);
@@ -25,7 +26,9 @@ public class TowerScr : MonoBehaviour
             SearchTarget();
         if(selfTower.CurrCooldown > 0)
         {
+            test++;
             selfTower.CurrCooldown -= Time.deltaTime;
+            Debug.Log(selfTower.CurrCooldown + ": " + selfTower.Name + ": " + Time.deltaTime + " ::: " + test);
         }
     }
 
@@ -47,7 +50,7 @@ public class TowerScr : MonoBehaviour
 
             foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
-                float currDistance = Vector2.Distance(transform.position, enemy.transform.position);
+                float currDistance = Vector2.Distance(new Vector2(transform.position.x + .5f, transform.position.y - .5f), enemy.transform.position);
 
                 if (currDistance < nearestEnemyDistance &&
                    currDistance <= selfTower.range)
@@ -64,11 +67,12 @@ public class TowerScr : MonoBehaviour
     
     void Shoot(Transform enemy)
     {
+        test = 1;
         selfTower.CurrCooldown = selfTower.Cooldown;
         
         GameObject proj = Instantiate(TowerProjectilePref);
         proj.GetComponent<TowerProjectileScr>().selfTower = selfTower;
-        proj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        proj.transform.position = new Vector2(transform.position.x + .5f, transform.position.y - .5f);
         proj.GetComponent<TowerProjectileScr>().SetTarget(enemy);
     }
 }

@@ -10,6 +10,7 @@ public class EnemySpawnScr : MonoBehaviour
     int spawnCount = 0;
     public GameObject enemyPref;
     GameCtrlScr gcs;
+    public bool gameOver = false;
 
     private void Start()
     {
@@ -21,8 +22,8 @@ public class EnemySpawnScr : MonoBehaviour
     {
         if(timeToSpawn <= 0)
         {
-            StartCoroutine(SpawnEnemy(spawnCount + 1));
-            timeToSpawn = 4;
+            StartCoroutine(SpawnEnemy(spawnCount));
+            timeToSpawn = 10;
         }
 
         timeToSpawn -= Time.deltaTime;
@@ -30,23 +31,26 @@ public class EnemySpawnScr : MonoBehaviour
 
     IEnumerator SpawnEnemy(int enemyCount)
     {
-        spawnCount++;
-
-        for (int i = 0; i < enemyCount; i++)
+        if (!gameOver)
         {
-            GameObject tmpEnemy = Instantiate(enemyPref);
-            tmpEnemy.transform.SetParent(gameObject.transform, false);
+            spawnCount++;
 
-            tmpEnemy.GetComponent<EnemyScr>().enemySelf = new Enemy(gcs.AllEnemies[Random.Range(0, gcs.AllEnemies.Count)]);
-            Transform startCellPos = LMS.wayPoints[0].transform;
-            
-            Vector3 startPos = new Vector3(startCellPos.position.x - startCellPos.GetComponent<SpriteRenderer>().bounds.size.x,
-                                           startCellPos.position.y - startCellPos.GetComponent<SpriteRenderer>().bounds.size.y / 2,
-                                           -1);
+            for (int i = 0; i < enemyCount; i++)
+            {
+                GameObject tmpEnemy = Instantiate(enemyPref);
+                tmpEnemy.transform.SetParent(gameObject.transform, false);
 
-            tmpEnemy.transform.position = startPos;
+                tmpEnemy.GetComponent<EnemyScr>().enemySelf = new Enemy(gcs.AllEnemies[Random.Range(0, gcs.AllEnemies.Count)]);
+                Transform startCellPos = LMS.wayPoints[0].transform;
 
-            yield return new WaitForSeconds(0.2f);
+                Vector3 startPos = new Vector3(startCellPos.position.x - startCellPos.GetComponent<SpriteRenderer>().bounds.size.x,
+                                               startCellPos.position.y - startCellPos.GetComponent<SpriteRenderer>().bounds.size.y / 2,
+                                               -1);
+
+                tmpEnemy.transform.position = startPos;
+
+                yield return new WaitForSeconds(0.2f);
+            }
         }
     }
 }

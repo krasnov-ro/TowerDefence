@@ -44,7 +44,10 @@ public class EnemyScr : MonoBehaviour
                 wayIndex++;
             }
             else
+            {
                 Destroy(gameObject);
+                HealthManagerScr.Instance.Health -= 1;
+            }
         }
     }
 

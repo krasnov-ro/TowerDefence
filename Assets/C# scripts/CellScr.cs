@@ -43,6 +43,7 @@ public class CellScr : MonoBehaviour
                                        transform.position.y - tmpTower.GetComponent<SpriteRenderer>().bounds.size.y / 2);
         tmpTower.transform.position = transform.position;
         tmpTower.GetComponent<TowerScr>().selfType = (TowerType)tower.type;
+        Debug.Log(tower.Cooldown + tower.Name + tower.CurrCooldown);
         hasTower = true;
         FindObjectOfType<ShopScr>().CloseShop();
     }

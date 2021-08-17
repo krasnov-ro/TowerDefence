@@ -10,7 +10,7 @@ public class Tower
     public float range, Cooldown, CurrCooldown = 0;
     public Sprite Spr;
 
-    public Tower(string Name, string text, int type, int Price, float range, float cd, string sprPath)  
+    public Tower(string Name, string text, int type, int Price, float range, float cd, string sprPath)
     {
         this.type = type;
         this.Name = Name;
@@ -19,6 +19,16 @@ public class Tower
         this.Cooldown = cd;
         this.Price = Price;
         Spr = Resources.Load<Sprite>(sprPath);
+    }
+    public Tower(Tower other)
+    {
+        type = other.type;
+        Name = other.Name;
+        Text = other.Text;
+        range = other.range;
+        Cooldown = other.Cooldown;
+        Price = other.Price;
+        Spr = other.Spr;
     }
 }
 
@@ -68,13 +78,13 @@ public class GameCtrlScr : MonoBehaviour
 
     private void Awake()
     {
-        AllTowers.Add(new Tower("Замораживающая", "Эта башня замедляет врагов", 0, 100, 2, .3f, "TowerSprites/tower1_1lvl"));
-        AllTowers.Add(new Tower("Мощная", "Эта башня бьет по области", 1, 200, 5, 1, "TowerSprites/tower2_1lvl"));
+        AllTowers.Add(new Tower("Замораживающая", "Эта башня замедляет врагов", 0, 100, 2, 2, "TowerSprites/tower1_1lvl"));
+        AllTowers.Add(new Tower("Мощная", "Эта башня бьет по области", 1, 200, 5, 5, "TowerSprites/tower2_1lvl"));
 
         AllTowersProjectiles.Add(new TowerProjectile(7, 10));
         AllTowersProjectiles.Add(new TowerProjectile(5, 30));
 
-        AllEnemies.Add(new Enemy(20, 4, "EnemiesSprites/enemy_nofly"));
-        AllEnemies.Add(new Enemy(80, 1, "EnemiesSprites/enemy_fly"));
+        AllEnemies.Add(new Enemy(100, 4, "EnemiesSprites/enemy_nofly"));
+        AllEnemies.Add(new Enemy(250, 1, "EnemiesSprites/enemy_fly"));
     }
 }

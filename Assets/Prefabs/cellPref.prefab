@@ -100,7 +100,8 @@ MonoBehaviour:
   hasTower: 0
   BaseColor: {r: 1, g: 1, b: 1, a: 1}
   CurrColor: {r: 0.36320752, g: 0.6618664, b: 1, a: 0.53333336}
-  ShopPref: {fileID: 5053339250530931252, guid: faa7471b93f21aa428ddd56db0144def, type: 3}
+  DestroyColor: {r: 0, g: 0, b: 0, a: 0}
+  ShopPref: {fileID: 8320353891548791329, guid: 51c476142ca0d174999f8508de6dc13a, type: 3}
   TowerPref: {fileID: 3917346513567788552, guid: 4121c21a7eeb2a4418b085b1e5eca63e, type: 3}
 --- !u!61 &-6963240977169282720
 BoxCollider2D:

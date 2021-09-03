@@ -10,7 +10,7 @@ public class LvlManagerScr : MonoBehaviour
     public Transform cellParent;
     public Sprite[] tileSpr = new Sprite[2];
     public List<GameObject> wayPoints = new List<GameObject>();
-    GameObject[,] allCells = new GameObject[10, 19];
+    GameObject[,] allCells = new GameObject[13, 24];
     //List<List<GameObject>> allCells = new List<List<GameObject>>();
     int currWayX, currWayY;
     GameObject firstCell;
@@ -41,6 +41,8 @@ public class LvlManagerScr : MonoBehaviour
     
     void CreateCell(bool isGround, Sprite spr, int x, int y, Vector3 wV)
     {
+        var uitransform = spr.rect;
+
         GameObject tmpCell = Instantiate(cellPref);
         tmpCell.transform.SetParent(cellParent, false);
 

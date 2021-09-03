@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361388870976024723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.31, y: 5.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -7.001, y: 5.003, z: 0}
+  m_LocalScale: {x: 0.950547, y: 0.9566402, z: 1.0143163}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   DestroyColor: {r: 0, g: 0, b: 0, a: 0}
   ShopPref: {fileID: 8320353891548791329, guid: 51c476142ca0d174999f8508de6dc13a, type: 3}
   TowerPref: {fileID: 3917346513567788552, guid: 4121c21a7eeb2a4418b085b1e5eca63e, type: 3}
+  UpgradePref: {fileID: 1948912531368968440, guid: 9cad8200f4b7e9c49b577199a33c16e4, type: 3}
 --- !u!61 &-6963240977169282720
 BoxCollider2D:
   m_ObjectHideFlags: 0

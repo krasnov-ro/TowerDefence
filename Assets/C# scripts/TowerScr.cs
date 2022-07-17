@@ -28,7 +28,7 @@ public class TowerScr : MonoBehaviour
         {
             test++;
             selfTower.CurrCooldown -= Time.deltaTime;
-            //Debug.Log(selfTower.CurrCooldown + ": " + selfTower.Name + ": " + Time.deltaTime + " ::: " + test);
+            Debug.Log(selfTower.CurrCooldown + ": " + selfTower.Name + ": " + Time.deltaTime + " ::: " + test);
         }
     }
 

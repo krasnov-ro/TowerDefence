@@ -1,28 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HideInfoPanelScr : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HideInfoPanelScr : MonoBehaviour
 {
-    public Color BaseColor, CurrColor, CurrEffectColor, BaseEffectColor;
+    public Color BaseColor, CurrColor;
     public RectTransform InfoPanel;
     public Image InfoPanelImg;
 
     // Start is called before the first frame update
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnMouseEnter()
     {
-        GetComponent<Image>().color = CurrColor;
-        GetComponent<Outline>().effectColor = CurrColor;
-        GetComponent<Shadow>().effectColor = CurrColor;
+        GetComponent<SpriteRenderer>().color = CurrColor;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnMouseExit()
     {
-        GetComponent<Image>().color = BaseColor;
-        GetComponent<Outline>().effectColor = BaseEffectColor;
-        GetComponent<Shadow>().effectColor = BaseEffectColor;
-        
+        GetComponent<SpriteRenderer>().color = BaseColor;
     }
 }

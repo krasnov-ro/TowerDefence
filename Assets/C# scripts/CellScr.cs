@@ -7,7 +7,7 @@ public class CellScr : MonoBehaviour
 {
     public bool isGround, hasTower = false;
     public Color BaseColor, CurrColor, DestroyColor;
-    public GameObject ShopPref, TowerPref, UpgradePref;
+    public GameObject ShopPref, TowerPref;
 
     public void OnMouseEnter()
     {
@@ -32,12 +32,6 @@ public class CellScr : MonoBehaviour
                 shopObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
                 shopObj.GetComponent<ShopScr>().selfCell = this;
             }
-            else
-            {
-                GameObject upgradeObj = Instantiate(UpgradePref);
-                upgradeObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
-                upgradeObj.GetComponent<TowerUpgradeScr>().selfCell = this;
-            }
         }
     }
 
@@ -50,7 +44,7 @@ public class CellScr : MonoBehaviour
                                        transform.position.y - tmpTower.GetComponent<SpriteRenderer>().bounds.size.y / 2);
         tmpTower.transform.position = transform.position;
         tmpTower.GetComponent<TowerScr>().selfType = (TowerType)tower.type;
-        //Debug.Log(tower.Cooldown + tower.Name + tower.CurrCooldown);
+        Debug.Log(tower.Cooldown + tower.Name + tower.CurrCooldown);
         hasTower = true;
         FindObjectOfType<ShopScr>().CloseShop();
     }
